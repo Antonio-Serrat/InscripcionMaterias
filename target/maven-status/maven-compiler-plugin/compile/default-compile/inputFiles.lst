@@ -1,0 +1,13 @@
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Teacher.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/repository/AccountRepository.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Subject.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/config/SecurityConfig.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/repository/TeacherRepository.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Roles.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/repository/SubjectRepository.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Admin.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Student.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/repository/StudentRepository.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/Application.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/service/AccountService.java
+/home/tonisrt/Documents/WorkSpace/InscipcionMaterias/src/main/java/inscripcionMaterias/entities/Account.java

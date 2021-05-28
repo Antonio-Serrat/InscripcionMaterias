@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark" th:fragment="menuad">
+  <a class="navbar-brand" th:href="@{/api/admin/homeAd}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" th:href="@{/api/admin/sub/subjects}">Subjects</a>
+      <a class="nav-item nav-link" th:href="@{/api/admin/sub/subjectForm}"> + New subjects</a>
+      <a class="nav-item nav-link" th:href="@{/api/admin/teach/teachers}"> Teachers</a>
+      <a class="nav-item nav-link" th:href="@{/api/admin/teach/teacherForm}"> + New teacher</a>
+      <a class="nav-item nav-link" th:href="@{/api/admin/students}">Students</a>
+      <a class="nav-item nav-link" th:href="@{/api/admin/studentForm}"> + New student</a>      
+		<div sec:authorize="isAuthenticated()">
+   			<a href="javascript: document.logoutForm.submit()" class="nav-link">LogOut</a>
+    		<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+        		<input hidden type="submit" value="Sign Out" />
+    		</form>
+		</div>    
+	</div>
+  </div>
+</nav>

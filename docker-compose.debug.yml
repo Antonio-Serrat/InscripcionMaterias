@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  inscipcionmaterias:
+    image: inscipcionmaterias
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y
+    ports:
+      - 8088:8088
+      - 5005:5005

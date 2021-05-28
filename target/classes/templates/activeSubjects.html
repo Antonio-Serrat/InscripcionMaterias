@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset="UTF-8">
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<title>Subjects</title>
+</head>
+<body>
+	<header th:insert="fragments/menustudent.html :: 'menustud'" ></header>
+	
+	<div class="container">
+		<h3>Subjects</h3>
+		<div th:if="${subjects.isEmpty()}" class="alert alert-primary" role="alert">
+			  No subjects avalible.
+		</div>
+		<span >
+			<table th:if="!${subjects.isEmpty()}"  class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">Name</th>
+<!-- 				  <th scope="col">Teacher</th> -->
+			      <th scope="col">Time</th>
+			      <th scope="col">Places</th>
+			      <th scope="col">Disponible</th>
+			      <th scope="col sm-x"></th>
+			      <th scope="col sm-x"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				<tr th:each="subject, iter : ${subjects}">
+			      	<th scope="row" th:text="${subject.name}" />
+<!-- 					<td th:text="${subject.teacher}" />	 -->
+				    <td th:text="${subject.time}" />	
+	  			    <td th:text="${subject.places}" />
+				    <td th:text="${subject.active}" />
+					<td><form th:action="@{|/api/student/newSubject/${subject.id}|}" method="post"><button type="submit" class="btn btn-dark">Register</button></form></td>
+				</tr>
+			  </tbody>
+			</table>
+		</span>
+		
+		</div>
+	
+	
+	  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+</body>
+</html>

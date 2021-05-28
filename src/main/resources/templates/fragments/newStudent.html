@@ -1,0 +1,21 @@
+<div class="container" th:fragment="studform">
+	<form th:action="@{|/api/admin/newStudent|}" method="POST" th:objet="${student}">
+	    <div class="form-group row">
+	      <label for="name">Name</label>
+	      <input type="text" class="form-control" id="name" name="name" th:value="*{name}">
+	    </div>
+	    <div class="form-group row">
+	      <label for="surname">Surname</label>
+	      <input type="text" class="form-control" id="surname" name="surname" th:value="*{surname}">
+	    </div>
+	    <div class="form-group row">
+	      <label for="dni">D.N.I.</label>
+	      <input type="text" class="form-control" id="dni" name="dni" th:value ="*{dni}" >
+	    </div>
+	    <div class="form-group row">
+	      <label for="file">File</label>
+	      <input type="text" class="form-control" id="file" name="file" th:value="*{file}">
+	    </div>
+		<button th:action="@{|/api/admin/studentForm|}" formethod="POST" type="submit" class="btn btn-primary" style="margin-left:475px">Save student</button>
+	</form>
+</div>

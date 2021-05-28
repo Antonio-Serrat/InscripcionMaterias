@@ -1,0 +1,29 @@
+ <div class="container" th:fragment="teachform">
+	<form th:action="@{|/api/admin/teach/newTeacher|}" method="POST" th:objet="${teacher}">
+		    <div class="form-group row">
+		      	<label for="name" class="col-sm-2 col-form-label">Name</label>
+				<div class="col-sm-10">
+		      		<input type="text" class="form-control" id="name" name="name" th:value="*{name}" placeholder="Nombre..">
+		    	</div>		    
+		    </div>
+		    <div class="form-group row">
+		      <label for="surname" class="col-sm-2 col-form-label">Surname</label>
+				<div class="col-sm-10">
+		      		<input type="text" class="form-control" id="surname" name="surname" th:value="*{surname}" placeholder="apellido..">
+		    	</div>	
+		   	</div>
+		    <div class="form-group row">
+		      <label for="dni" class="col-sm-2 col-form-label">D.N.I</label>
+		      <div class="col-sm-10">
+		     	 <input type="text" class="form-control" id="dni" name="dni" th:value="*{dni}"placeholder="dni.." >
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="active" class="col-sm-2 col-form-label">Disponible</label>
+		      <div class="col-sm-10">
+		    	  <input type="text" class="form-control" id="active" name="active" th:value="*{active}" placeholder="si.. no ..">
+		      </div>
+		    </div>
+		<button th:action="@{|/api/admin/teach/teacherForm|}" formethod="POST" type="submit" class="btn btn-primary" style="margin-left:475px">Save teacher</button>
+	</form>
+</div>
