@@ -84,9 +84,9 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/teacher", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String teach(@RequestParam(value = "id") Long id, Model model) {
+	public String teach(@RequestParam(value = "id") Long id, @ModelAttribute Teacher teach, Model model) {
 
-		Teacher teach = repoTeach.findById(id).get();
+		teach = repoTeach.findById(id).get();
 
 		model.addAttribute("teacher", teach);
 
@@ -94,7 +94,7 @@ public class TeacherController {
 
 	}
 
-	@RequestMapping(value = "/editTeach/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
+	@RequestMapping(value = "/edit/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
 	public String editTeach(@ModelAttribute Teacher teach, @PathVariable(value = "id") Long id,
 			@RequestParam(value = "name") String name, @RequestParam(value = "surname") String surname,
 			@RequestParam(value = "dni") Long dni, @RequestParam(value = "active") String active, Model model)

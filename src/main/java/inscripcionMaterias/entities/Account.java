@@ -32,6 +32,7 @@ public class Account implements Serializable, UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Cascade(CascadeType.ALL)
 	private Long id;
 
 	private String username;

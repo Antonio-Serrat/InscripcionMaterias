@@ -11,32 +11,32 @@
 	<header th:insert="fragments/menuadmin.html :: 'menuad'" ></header>
 
  <div class="container" >
-	<form th:action="@{|/api/admin/editSub/${subject.id}|}" method="POST" th:objet="${subject}">
+	<form th:action="@{|/api/admin/sub/editSub/${subject.id}|}" method="POST" th:objet="${subject}">
 	    <div class="form-group row">
 	      <label for="name">Name</label>
-	      <input type="text" class="form-control" id="name" name="name" th:value="*{name}" th:placeholder ="${subject.name}">
+	      <input type="text" class="form-control" id="name" name="name" th:field="${subject.name}">
 	    </div>
 	    <div class="form-group row">
 	      <label for="places">Places</label>
-	      <input type="text" class="form-control" id="palces" name="places" th:value="*{places}" th:placeholder ="${subject.places}">
+	      <input type="text" class="form-control" id="palces" name="places" th:field="${subjects.places}" >
 	    </div>
 	    <div class="form-group row">
 	      <label for="time">Time</label>
-	      <input type="text" class="form-control" id="time" name="time" th:value ="*{time}" th:placeholder ="${subject.time}">
+	      <input type="text" class="form-control" id="time" name="time" th:field ="${subject.time}">
 	    </div>
-	<!--     <div class="form-group col-md-4"> -->
-	<!-- 		<label for="inputState">Teacher</label> -->
-	<!-- 	     <select id="inputState" class="form-control" name="teacher" th:each="teacher, iter : ${atmin.teachers}"> -->
-	<!-- 	       	<option selected>select..</option> -->
-	<!-- 	        <option th:text="${teacher.surname}"></option> -->
+<!-- 	    <div class="form-group col-md-4"> -->
+<!-- 			<label for="inputState">Teacher</label> -->
+<!-- 		     <select id="inputState" class="form-control" name="teacher" th:each="teacher, iter : ${teachers}"> -->
+<!-- 		       	<option selected>select..</option> -->
+<!-- 		        <option th:value="${teacher.surname}"></option> -->
 		        
-	<!-- 	    </select> -->
-	<!-- 	</div> -->
+<!-- 		    </select> -->
+<!-- 		</div> -->
 	    <div class="form-group row">
 	      <label for="active">Disponible</label>
-	      <input type="text" class="form-control" id="active" name="active" th:value="*{active}" th:placeholder ="${subject.active}">
+	      <input type="text" class="form-control" id="active" name="active" th:field="${subject.active}"  >
 	    </div>
-		<button formethod="POST" type="submit" class="btn btn-primary" style="margin-left:475px">Save subject</button>
+		<button formethod="POST" type="submit" class="btn btn-primary"style="margin-left:50%" >Save subject</button>
 	</form>
 </div>
 

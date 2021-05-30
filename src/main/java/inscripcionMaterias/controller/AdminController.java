@@ -23,8 +23,6 @@ import inscripcionMaterias.repository.AccountRepository;
 import inscripcionMaterias.repository.AtminRepository;
 import inscripcionMaterias.repository.RolesRepository;
 import inscripcionMaterias.repository.StudentRepository;
-import inscripcionMaterias.repository.SubjectRepository;
-import inscripcionMaterias.repository.TeacherRepository;
 
 @Controller
 @RequestMapping(value = "/api/admin")
@@ -33,11 +31,7 @@ public class AdminController {
 	@Autowired
 	PasswordEncoder bcrypt;
 	@Autowired
-	private SubjectRepository repoSubject;
-	@Autowired
 	private StudentRepository repoStudent;
-	@Autowired
-	private TeacherRepository repoTeach;
 	@Autowired
 	private AccountRepository repoAccount;
 	@Autowired
@@ -56,16 +50,6 @@ public class AdminController {
 
 	@RequestMapping(value = "/studentForm")
 	public String studentForm(Model model) {
-
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-//		User user = (User) auth.getPrincipal();
-//		acc = repoAccount.findByusername(user.getUsername());
-//		admin = acc.getAtmin();
-//
-//		repoAdmin.save(admin);
-//		model.addAttribute("admin", admin);
-
 		return "studentForm";
 	}
 
@@ -94,17 +78,19 @@ public class AdminController {
 
 		repoStudent.save(stud);
 		repoAccount.save(acc);
+		repoRol.save(rol);
 
 		model.addAttribute("accountSt", acc);
 		model.addAttribute("student", stud);
+		model.addAttribute("Rol", rol);
 
 		return "redirect:/api/admin/students";
 	}
 
-	@RequestMapping(value = "/student", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String student(@RequestParam(value = "id") Long id, Model model) {
+	@RequestMapping(value = "/student", method = { RequestMethod.POST })
+	public String student(@RequestParam(value = "id") Long id, @ModelAttribute Student stud, Model model) {
 
-		Student stud = repoStudent.findById(id).get();
+		stud = repoStudent.findById(id).get();
 
 		model.addAttribute("student", stud);
 
@@ -112,26 +98,21 @@ public class AdminController {
 
 	}
 
-	@RequestMapping(value = "/editStud/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String editStud(@ModelAttribute Student stud, @ModelAttribute Account acc,
-			@PathVariable(value = "id") Long id, @RequestParam(value = "name") String name,
-			@RequestParam(value = "file") String file, @RequestParam(value = "dni") String dni,
-			@RequestParam(value = "surname") String surname, Model model) throws ParseException {
+	@RequestMapping(value = "/editStud/{id}", method = { RequestMethod.POST })
+	public String editStud(@ModelAttribute Student stud, @PathVariable(value = "id") Long id,
+			@RequestParam(value = "name") String name, @RequestParam(value = "file") String file,
+			@RequestParam(value = "dni") String dni, @RequestParam(value = "surname") String surname, Model model)
+			throws ParseException {
 
 		stud = repoStudent.findByid(id);
-		acc = stud.getAcc();
-//		stud = acc.getStudent();
 
-		acc.getStudent().setName(name);
-		acc.getStudent().setSurname(surname);
-		acc.getStudent().setDni(dni);
-		acc.getStudent().setFile(file);
-		acc.setStudent(stud);
+		stud.setName(name);
+		stud.setSurname(surname);
+		stud.setDni(dni);
+		stud.setFile(file);
 
-//		repoAccount.save(acc);
 		repoStudent.save(stud);
 
-		model.addAttribute("account", acc);
 		model.addAttribute("student", stud);
 
 		return "redirect:/api/admin/students";
@@ -143,6 +124,7 @@ public class AdminController {
 			@PathVariable(value = "id") Long id, Model model) {
 
 		stud = repoStudent.findByid(id);
+		stud.mySubjects.clear();
 		repoStudent.delete(stud);
 
 		return "redirect:/api/admin/students";

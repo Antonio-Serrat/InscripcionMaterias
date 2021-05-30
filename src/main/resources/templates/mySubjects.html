@@ -10,31 +10,20 @@
 </head>
 <body>
 	<header th:insert="fragments/menustudent.html :: 'menustud'" ></header>
-
-	<script type="text/javascript">
-		function ConfirmDelete(){
-			var response = confirm("Are you sure to delete the subject?");
-			if(response == true){
-				return true;
-			}else{
-				return false;
-			}
-		}
-	</script>
 	
+
 	<div class="container">
 		<h3>My Subjects</h3>
-		<div th:if="${student.mySubjects.isEmpty()}" class="alert alert-primary" role="alert">
+		<div th:if="${mySubjects.isEmpty()}" class="alert alert-primary" role="alert">
 		  No subjects register.
 		</div>
 		<span >
-			<table th:if="!${student.mySubjects.isEmpty()}"  class="table table-hover">
+			<table th:if="!${mySubjects.isEmpty()}"  class="table table-hover">
 			  <thead>
 			    <tr>
 			      <th scope="col">Name</th>
 <!-- 				  <th scope="col">Teacher</th> -->
 			      <th scope="col">Time</th>
-			      <th scope="col">Places</th>
 			      <th scope="col">Disponible</th>
 			      <th scope="col sm-x"></th>
 			      <th scope="col sm-x"></th>
@@ -45,14 +34,14 @@
 			      	<th scope="row" th:text="${subject.name}" />
 <!-- 					<td th:text="${subject.teacher}" />	 -->
 				    <td th:text="${subject.time}" />	
-	  			    <td th:text="${subject.places}" />
 				    <td th:text="${subject.active}" />
+				    
 				</tr>
 			  </tbody>
 			</table>
 		</span>
-		
 		</div>
+		
 	
 	
 	  <!-- jQuery first, then Popper.js, then Bootstrap JS -->

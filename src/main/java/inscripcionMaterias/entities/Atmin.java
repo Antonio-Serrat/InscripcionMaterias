@@ -26,6 +26,7 @@ public class Atmin implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Cascade(CascadeType.ALL)
 	private Long id;
 
 	@OneToOne
@@ -33,21 +34,5 @@ public class Atmin implements Serializable {
 	private Account acc;
 
 	private String username;
-
-//	@OneToMany
-//	@Cascade(CascadeType.ALL)
-//	public List<Account> accounts = new ArrayList<>();
-//
-//	@OneToMany
-//	@Cascade(CascadeType.ALL)
-//	public List<Subject> subjects = new ArrayList<>();
-//
-//	@OneToMany
-//	@Cascade(CascadeType.ALL)
-//	public List<Student> students = new ArrayList<>();
-
-	public Atmin(String username) {
-		this.username = this.acc.getUsername();
-	}
 
 }

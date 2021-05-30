@@ -48,9 +48,9 @@ public class StudentController {
 
 		stud.getMySubjects();
 
-		model.addAttribute("subjects", repoSubject.findAll());
+		model.addAttribute("mySubjects", stud.getMySubjects());
 
-		return "mySubjects";
+		return "/mySubjects";
 	}
 
 	@RequestMapping(value = "/subjects", method = RequestMethod.GET)
@@ -64,7 +64,7 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/newSubject/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String newSubjects(@ModelAttribute Account acc, @ModelAttribute Student stud,
+	public String newSubjects(@ModelAttribute Account acc, @ModelAttribute Student stud, @ModelAttribute Subject sub,
 			@PathVariable(value = "id") Long id, Model model) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -72,17 +72,34 @@ public class StudentController {
 		User user = (User) auth.getPrincipal();
 		acc = repoAccount.findByusername(user.getUsername());
 
-		Subject sub = repoSubject.findById(id).get();
+		sub = repoSubject.findById(id).get();
+		String time = sub.getTime();
+
+		if (sub.getPlaces() <= 0) {
+			sub.setActive("No");
+			repoSubject.save(sub);
+			model.addAttribute("subject", sub);
+			model.addAttribute("You cannot register because there aren't more places", model);
+
+			return "redirect:/api/student/subjects";
+		}
+		if (time.equals(stud.mySubjects.contains(time))) {
+			model.addAttribute("You cannot register because you are register on a same time in other subject", model);
+
+			return "redirect:/api/student/subjects";
+		} else {
+		}
 
 		stud = acc.getStudent();
 		stud.mySubjects.add(sub);
 
-		sub.getStud().add(stud);
+		sub.students.add(stud);
+		sub.setPlaces(sub.getPlaces() - 1);
 
 		repoSubject.save(sub);
 		repoStudent.save(stud);
 
-		model.addAttribute("subject", sub);
+		model.addAttribute("mySubjects", sub);
 
 		model.addAttribute("student", stud);
 

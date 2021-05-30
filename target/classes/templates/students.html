@@ -47,7 +47,6 @@
 				    <td th:text="${student.dni}" />
 				    <td><form th:action="@{|/api/admin/student/?id=${student.id}|}" method="post"><button type="submit" class="btn btn-warning">Edit</button></form></td>
 				    <td><form th:action="@{|/api/admin/deleteStud/${student.id}|}" method="post"><button type="submit" class="btn btn-danger" onclick="return ConfirmDelete()">Delete</button></form></td>
-<!-- 				 	<td><form th:action="@{|/api/therapist/patientHistory/${patient.id}|}" method="post"><button type="submit" class="btn btn-dark">Ver Paciente</button></form></td> -->
 				</tr>
 			  </tbody>
 			</table>

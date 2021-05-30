@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import inscripcionMaterias.entities.Account;
 import inscripcionMaterias.entities.Atmin;
 import inscripcionMaterias.entities.Subject;
+import inscripcionMaterias.entities.Teacher;
 import inscripcionMaterias.repository.AccountRepository;
 import inscripcionMaterias.repository.AtminRepository;
 import inscripcionMaterias.repository.StudentRepository;
@@ -56,25 +57,28 @@ public class SubjectController {
 	@RequestMapping(value = "/newSubject", method = { RequestMethod.PUT, RequestMethod.POST })
 	public String newSubject(@ModelAttribute Atmin admin, @ModelAttribute Subject sub,
 			@RequestParam(value = "time") String time, @RequestParam(value = "places") Long places,
-			@RequestParam(value = "active") String active, @RequestParam(value = "name") String name, Model model) {
+			@RequestParam(value = "active") String active, @RequestParam(value = "name") String name,
+			@RequestParam(value = "teach") Teacher teach, Model model) {
 
 		sub.setName(name);
 		sub.setPlaces(places);
 		sub.setActive(active);
 		sub.setTime(time);
-//		sub.setTeacher(teacher);
+		sub.setTeacher(teach);
 
 		repoSubject.save(sub);
+		repoTeach.findAll();
 
 		model.addAttribute("subject", sub);
+		model.addAttribute("teachers", repoTeach.findAll());
 
 		return "redirect:/api/admin/sub/subjects";
 	}
 
 	@RequestMapping(value = "/subject", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String subject(@RequestParam(value = "id") Long id, Model model) {
+	public String subject(@RequestParam(value = "id") Long id, @ModelAttribute Subject sub, Model model) {
 
-		Subject sub = repoSubject.findById(id).get();
+		sub = repoSubject.findById(id).get();
 
 		model.addAttribute("subject", sub);
 

@@ -1,6 +1,7 @@
 package inscripcionMaterias.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -28,6 +29,7 @@ public class Subject implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Cascade(CascadeType.ALL)
 	private Long id;
 
 	private String name;
@@ -36,7 +38,8 @@ public class Subject implements Serializable {
 	private String active;
 
 	@ManyToMany
-	private List<Student> stud;
+	@Cascade(CascadeType.ALL)
+	public List<Student> students = new ArrayList<Student>();
 
 	@OneToOne
 	@Cascade(CascadeType.ALL)

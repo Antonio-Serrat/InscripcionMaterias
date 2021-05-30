@@ -13,21 +13,21 @@
 	<form th:action="@{|/api/admin/editStud/${student.id}|}" method="POST" th:objet="${student}">
 	    <div class="form-group row">
 	      <label for="name">Name</label>
-	      <input type="text" class="form-control" id="name" name="name" th:value="*{name}" th:placeholder="${student.name}">
+	      <input type="text" class="form-control" id="name" name="name" th:field="${student.name}" >
 	    </div>
 	    <div class="form-group row">
 	      <label for="surname">Surname</label>
-	      <input type="text" class="form-control" id="surname" name="surname" th:value="*{surname}" th:placeholder="${student.surname}">
+	      <input type="text" class="form-control" id="surname" name="surname" th:field="${student.surname}">
 	    </div>
 	    <div class="form-group row">
 	      <label for="dni">D.N.I.</label>
-	      <input type="text" class="form-control" id="dni" name="dni" th:value ="*{dni}" th:placeholder="${student.dni}">
+	      <input type="text" class="form-control" id="dni" name="dni" th:field ="${student.dni}">
 	    </div>
 	    <div class="form-group row">
 	      <label for="file">File</label>
-	      <input type="text" class="form-control" id="file" name="file" th:value="*{file}" th:placeholder="${student.file}">
+	      <input type="text" class="form-control" id="file" name="file" th:field="${student.file}" >
 	    </div>
-		<button formethod="POST" type="submit" class="btn btn-primary" style="margin-left:475px">Save student</button>
+		<button formethod="POST" type="submit" class="btn btn-primary" style="margin-left:40%">Save student</button>
 	</form>
 </div>
 </body>

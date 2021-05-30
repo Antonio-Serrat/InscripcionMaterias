@@ -12,18 +12,16 @@
 	      <label for="time">Time</label>
 	      <input type="text" class="form-control" id="time" name="time" th:value ="*{time}" >
 	    </div>
-	<!--     <div class="form-group col-md-4"> -->
-	<!-- 		<label for="inputState">Teacher</label> -->
-	<!-- 	     <select id="inputState" class="form-control" name="teacher" th:each="teacher, iter : ${atmin.teachers}"> -->
-	<!-- 	       	<option selected>select..</option> -->
-	<!-- 	        <option th:text="${teacher.surname}"></option> -->
-		        
-	<!-- 	    </select> -->
-	<!-- 	</div> -->
+	    <div class="form-group row" >
+			<label for="inputState">Teacher</label>
+		     <select id="inputState" class="form-control"  th:value="*{teacher}">
+		       	<option name="teacher" th:object="${teacher}" th:each="teacher,iter : ${teachers}" th:value="${teacher.surname}" th:text="${teacher.surname}" th:selected="${teacher.surname}"></option>  
+		    </select>
+		</div>
 	    <div class="form-group row">
 	      <label for="active">Disponible</label>
-	      <input type="text" class="form-control" id="active" name="active" th:value="*{active}">
+	      <input type="text" class="form-control" id="active" name="active" th:value="*{active}" >
 	    </div>
-		<button th:action="@{|/api/admin/sub/subjectForm|}" formethod="POST" type="submit" class="btn btn-primary" style="margin-left:475px">Save subject</button>
+		<button th:action="@{|/api/admin/sub/subjectForm|}" formethod="POST" type="submit" class="btn btn-primary" style="margin-left:40%">Save subject</button>
 	</form>
 </div>
