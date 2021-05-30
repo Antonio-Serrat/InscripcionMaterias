@@ -27,7 +27,6 @@ public class Teacher implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Cascade(CascadeType.ALL)
 	private Long id;
 
 	private String name;

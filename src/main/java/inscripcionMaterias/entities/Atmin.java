@@ -26,7 +26,6 @@ public class Atmin implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Cascade(CascadeType.ALL)
 	private Long id;
 
 	@OneToOne

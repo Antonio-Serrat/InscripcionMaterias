@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,7 +89,7 @@ public class AdminController {
 	@RequestMapping(value = "/student", method = { RequestMethod.POST })
 	public String student(@RequestParam(value = "id") Long id, @ModelAttribute Student stud, Model model) {
 
-		stud = repoStudent.findById(id).get();
+		stud = repoStudent.findByid(id);
 
 		model.addAttribute("student", stud);
 
@@ -119,14 +118,14 @@ public class AdminController {
 
 	}
 
-	@PostMapping(value = "/deleteStud/{id}")
-	public String deleteStud(@ModelAttribute Student stud, @ModelAttribute Atmin admin,
+	@RequestMapping(value = "/deleteStud/{id}", method = { RequestMethod.DELETE, RequestMethod.POST })
+	public String deleteStud(@ModelAttribute Student stud, @ModelAttribute Account acc,
 			@PathVariable(value = "id") Long id, Model model) {
 
 		stud = repoStudent.findByid(id);
-		stud.mySubjects.clear();
-		repoStudent.delete(stud);
+		acc = stud.getAcc();
 
+		repoAccount.delete(acc);
 		return "redirect:/api/admin/students";
 
 	}

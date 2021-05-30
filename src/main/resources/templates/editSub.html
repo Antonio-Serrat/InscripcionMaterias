@@ -18,25 +18,17 @@
 	    </div>
 	    <div class="form-group row">
 	      <label for="places">Places</label>
-	      <input type="text" class="form-control" id="palces" name="places" th:field="${subjects.places}" >
+	      <input type="text" class="form-control" id="palces" name="places" th:field="${subject.places}" >
 	    </div>
 	    <div class="form-group row">
 	      <label for="time">Time</label>
 	      <input type="text" class="form-control" id="time" name="time" th:field ="${subject.time}">
 	    </div>
-<!-- 	    <div class="form-group col-md-4"> -->
-<!-- 			<label for="inputState">Teacher</label> -->
-<!-- 		     <select id="inputState" class="form-control" name="teacher" th:each="teacher, iter : ${teachers}"> -->
-<!-- 		       	<option selected>select..</option> -->
-<!-- 		        <option th:value="${teacher.surname}"></option> -->
-		        
-<!-- 		    </select> -->
-<!-- 		</div> -->
 	    <div class="form-group row">
 	      <label for="active">Disponible</label>
 	      <input type="text" class="form-control" id="active" name="active" th:field="${subject.active}"  >
 	    </div>
-		<button formethod="POST" type="submit" class="btn btn-primary"style="margin-left:50%" >Save subject</button>
+		<button formethod="POST" type="submit" class="btn btn-primary"style="margin-left:40%" >Save subject</button>
 	</form>
 </div>
 

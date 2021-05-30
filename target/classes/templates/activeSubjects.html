@@ -22,7 +22,7 @@
 			  <thead>
 			    <tr>
 			      <th scope="col">Name</th>
-<!-- 				  <th scope="col">Teacher</th> -->
+				  <th scope="col">Teacher</th>
 			      <th scope="col">Time</th>
 			      <th scope="col">Places</th>
 			      <th scope="col">Disponible</th>
@@ -33,7 +33,7 @@
 			  <tbody>
 				<tr th:each="subject, iter : ${subjects}">
 			      	<th scope="row" th:text="${subject.name}" />
-<!-- 					<td th:text="${subject.teacher}" />	 -->
+					<td th:text="${subject.teacher}" />	
 				    <td th:text="${subject.time}" />	
 	  			    <td th:text="${subject.places}" />
 				    <td th:text="${subject.active}" />
