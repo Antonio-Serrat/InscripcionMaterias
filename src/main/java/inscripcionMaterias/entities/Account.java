@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,16 +36,13 @@ public class Account implements Serializable, UserDetails {
 	private String username;
 	private String password;
 
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Role rol;
 
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Student student;
 
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Atmin admin;
 
 	@Override

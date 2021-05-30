@@ -102,11 +102,11 @@ public class SubjectController {
 	}
 
 	@PostMapping(value = "/deleteSub/{id}")
-	public String deleteSub(@ModelAttribute Subject sub, @ModelAttribute Atmin admin,
-			@PathVariable(value = "id") Long id, Model model) {
+	public String deleteSub(@ModelAttribute Subject sub, @PathVariable(value = "id") Long id, Model model) {
 
 		sub = repoSubject.findByid(id);
-		repoSubject.delete(sub);
+		sub.getStudents().clear();
+		repoSubject.deleteById(id);
 
 		return "redirect:/api/admin/sub/subjects";
 

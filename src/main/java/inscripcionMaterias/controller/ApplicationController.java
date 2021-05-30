@@ -55,7 +55,7 @@ public class ApplicationController {
 		Account acc = new Account();
 		Role role = new Role();
 		role.setRol(Rol.ADMIN);
-		acc.setUsername("root2@go");
+		acc.setUsername("root@go");
 		acc.setPassword(pass);
 		acc.setRol(role);
 

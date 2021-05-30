@@ -2,6 +2,7 @@ package inscripcionMaterias.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,9 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import inscripcionMaterias.Enum.Rol;
 import lombok.AllArgsConstructor;
@@ -30,8 +28,7 @@ public class Role implements Serializable {
 
 	private Long id;
 
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Account ac;
 
 	@Enumerated(EnumType.ORDINAL)

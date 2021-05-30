@@ -73,27 +73,33 @@ public class StudentController {
 		acc = repoAccount.findByusername(user.getUsername());
 
 		sub = repoSubject.findById(id).get();
-		String time = sub.getTime();
 
-		if (sub.getPlaces() <= 0) {
+		if (sub.getPlaces() == 0) {
 			sub.setActive("No");
-			repoSubject.save(sub);
 			model.addAttribute("subject", sub);
+			repoSubject.save(sub);
 			model.addAttribute("You cannot register because there aren't more places", model);
 
 			return "redirect:/api/student/subjects";
 		}
-		if (time.equals(stud.mySubjects.contains(time))) {
-			model.addAttribute("You cannot register because you are register on a same time in other subject", model);
+		for (Subject i : stud.getMySubjects()) {
+			String time = sub.getTime();
 
-			return "redirect:/api/student/subjects";
-		} else {
+			if (time.equals(i.getTime())) {
+
+				model.addAttribute("You cannot register because you are register on a same time in other subject",
+						model);
+
+				return "redirect:/api/student/subjects";
+			} else {
+
+			}
 		}
 
 		stud = acc.getStudent();
-		stud.mySubjects.add(sub);
+		stud.getMySubjects().add(sub);
 
-		sub.students.add(stud);
+		sub.getStudents().add(stud);
 		sub.setPlaces(sub.getPlaces() - 1);
 
 		repoSubject.save(sub);

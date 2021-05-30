@@ -2,15 +2,13 @@ package inscripcionMaterias.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,8 +32,7 @@ public class Teacher implements Serializable {
 	private Long dni;
 	private String active;
 
-	@OneToOne
-	@Cascade(CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Subject subject;
 
 }
