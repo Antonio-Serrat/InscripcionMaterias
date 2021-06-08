@@ -36,7 +36,6 @@ public class Subject implements Serializable {
 	private String active;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-
 	private List<Student> students = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL)
